@@ -1,0 +1,23 @@
+                {% extends "m_user_base.html" %}
+              
+	            
+                    {% block content %}
+                  <article class="simple-title">
+			{% if movie %}
+			Edit Review
+			{% else %}
+			Write a Review
+			{% endif%}
+                          </article>
+                          <section>
+             <article class="loginCard">
+    <form   action="." method="post" enctype="multipart/form-data" >{% csrf_token %}
+                  {{form.non_field_errors }}
+
+    		   {% include "movie.html" %}
+
+     <input type="submit" class="button" name="submit" value="Post Review" id="submit" />
+        </form>
+           </article>
+             </section>
+                       {% endblock %}

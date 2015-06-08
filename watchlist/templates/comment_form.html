@@ -1,0 +1,15 @@
+
+                               {% load comments %}
+                               
+                               <div class="comment-form">
+          <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+                             {% csrf_token %}
+        
+                          {% include "comment_base.html" %}
+                           
+
+   
+          <input type="hidden" name="next" value="{% url 'article' article.slug  %}" />
+               <input class="button" name="post" value="Post comment" type="submit"/>
+
+                                    </form>

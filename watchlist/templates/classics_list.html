@@ -1,0 +1,61 @@
+                          {% extends "core.html" %}
+                        
+                             {% block nav %}
+                         <nav class="nav centerpiece">
+                           <ul>
+	    
+	     <li ><a href="{% url 'watchlist' %}">WatchList</a></li>
+	       <li><a href="{% url 'tv' %}">Movies</a></li>
+	        <li><a href="{% url 'series' %}">Series</a></li>
+	         <li><a href="{% url 'tv' %}">T.V Guide</a></li>
+	         <li class="current"><a href="{% url 'classics' %}">Classics</a></li>
+	         
+     
+                             </ul>
+                                
+                                
+                                </nav>
+                            {% endblock %}
+                            
+                     
+                       <!-- load movies as cards -->
+                          {% block content %}
+                  <h2 class="centerpiece"> What To Watch</h2>
+                          
+                         <section class="adjusted">
+                            
+                      {% for movie in movie_list %}
+                          <div id="columns">
+                            
+		               <figure>
+                      
+      <article> <img src ="{{MEDIA_URL}}img/interstellar.jpg" alt="Movie Poster"/></article>
+                               
+                           <article class="centerpiece"> 
+     <h2><a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a></h2> 
+                              </article>
+                    
+                              <article class="review">
+            {{movie.review|safe|linebreaks|truncatechars:140}}
+ <a class="align-center" href="{% url 'movie' movie.slug %}">&rarr;</a>
+ 
+ 
+                    <article class="centerpiece">
+                <p> <b> By {{movie.user.full_name|title}}</b></p>
+         <p class="micro-copy"> {{movie.timestamp|timesince}} ago</p>
+   
+                                </article>
+                                 {% empty %}
+                         <article class="floatingCard noReview">
+             <img class="posterCard" src="{{MEDIA_URL}}img/interstellar.jpg">
+                   <p class="handwritten padded"> No reviews posted yet </p>
+                                 </article> 
+                               
+                                 </figure>
+                                   </div>
+                                 {% endfor %}
+                                  
+                                  </section>
+                                 {% endblock %}
+                                 
+

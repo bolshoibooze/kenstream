@@ -1,0 +1,25 @@
+                {% extends "user_base.html" %}
+                   {% load ratings_tags %}
+	            
+                    {% block content %}
+                   <h3 class="centerpiece">
+			{% if movie %}
+			Edit Review
+			{% else %}
+			Write a Review
+			{% endif%}
+                          </h3>
+                       <section>
+                   <article class="wideCard ">
+                
+<form class="pure-form"  action="." method="post" enctype="multipart/form-data" >{% csrf_token %}
+                   {{form.non_field_errors }}
+                   
+
+    		   {% include "movie.html" %}
+
+     <input type="submit" class="button" name="submit" value="Post" id="submit" />
+        </form>
+           </article>
+             </section>
+                       {% endblock %}

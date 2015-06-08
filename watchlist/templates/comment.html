@@ -1,0 +1,34 @@
+                           {% load comments %}
+
+                       {% if comment.user.is_staff %}
+                       <div class="author-comments">
+        <a href="{% get_comment_permalink comment %}">permalink</a><br/>
+                <span>{{ comment.submit_date|timesince}}</span><br/>
+                        <em>{{ comment.name }}</em>
+                                   </div>
+                                 {% endif %}
+  
+                           <div class="">
+                     <div class="">
+Comment for: <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
+    </div>
+    
+    {% if comment.is_removed %}
+    <span class="bad-comment">
+      "Inappropriate comments like this one are removed."
+    </span>
+    {% else %}
+    
+          {{ comment.comment|safe|linebreaks }}
+             {% endif %}
+          </div>
+  
+  {% if not comment.user.is_staff %}
+  <div class="user-comments">
+    <a href="{% get_comment_permalink comment %}">permalink</a><br/>
+    <span>{{ comment.submit_date|timesince}}</span><br/>
+    <em>{{ comment.name }}</em>
+  </div>
+  {% endif %}
+  
+</div>

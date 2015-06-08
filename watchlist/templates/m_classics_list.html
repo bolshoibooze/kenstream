@@ -1,0 +1,48 @@
+                     {% extends "mobile_cover.html" %}
+                     
+                     
+                         {% block content %}
+               <article class="simple-title">Classics</article>
+                          
+                          {% for movie in movie_list %}
+                        
+                            <div class="card">
+                       
+                               <article>
+       <img class="miniPoster" src ="{{MEDIA_URL}}img/interstellar.jpg" alt="Movie Poster"/>
+                              </article>
+     
+                                
+                           <article class="movie-title">
+     <a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a>
+                                     </article> 
+                            
+                             
+                    
+                    
+                              <article class="review">
+          <p>
+{{movie.review|safe|linebreaks|truncatechars:140}}<a  href="{% url 'movie' movie.slug %}">
+&rarr;</a>
+          </p>
+                                </article>
+                        
+                        <article class="centerpiece"> 
+                 <p> <b> By {{movie.user.full_name|title}}</a></p>
+              <span class="tiny-print time ">{{movie.timestamp|timesince}} ago </span>
+                                 </article>
+                                 
+                                 {% empty %}
+                         <article class="floatingCard noReview">
+             <img class="posterCard" src="{{MEDIA_URL}}img/interstellar.jpg">
+                   <p class="handwritten padded"> No reviews posted yet </p>
+                                 </article> 
+                                 
+                                 
+                                  </div>
+                                 {% endfor %}
+                                 
+                                  
+                                {% endblock %}
+                                
+                                

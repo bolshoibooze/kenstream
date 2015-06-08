@@ -1,0 +1,51 @@
+                              
+                          <div class="fieldWrapper blank">
+                           {{ form.content_type.errors }}
+                    <label for="id_content_type"> content type</label>
+                               {{ form.content_type }}
+                                  </div>
+                                  
+                        <div class="fieldWrapper blank">
+                           {{ form.object_pk.errors }}
+                       <label for="id_object_pk"> object</label>
+                             {{ form.object_pk }}
+                                   </div>
+    <div class="fieldWrapper blank">
+        {{ form.timestamp.errors }}
+        <label for="id_timestamp">timestamp </label>
+        {{ form.timestamp }}
+    </div>
+    <div class="fieldWrapper blank">
+        {{ form.security_hash.errors }}
+        <label for="id_security_hash"> security hash </label>
+        {{ form.security_hash }}
+    </div>
+    <div class="fieldWrapper blank">
+        {{ form.email.errors }}
+        <label for="id_email"> email </label>
+        {{ form.email }}
+    </div>
+    <div class="fieldWrapper blank">
+        {{ form.url.errors }}
+        <label for="id_url">url</label>
+        {{ form.url }}
+    </div>
+    <div class="fieldWrapper blank">
+        {{ form.honeypot.errors }}
+        <label for="id_honeypot">honeypot</label>
+        {{ form.honeypot }}
+    </div>
+    
+    <div class="fieldWrapper blank">
+        {{ form.name.errors }}
+<label  for="id_name"> your name:</label><br/>
+ <span id="name">{{ form.name }}</span>
+    </div>
+    
+                        <div id="comment"  class="fieldWrapper">
+                         {{ form.comment.errors }}
+<label  for="id_comment"><span class="align-field">Comment:</span></label><br/>
+           <span class="align-field mobile-form" id="comment">{{ form.comment }}</span>
+                                </div>
+    
+   

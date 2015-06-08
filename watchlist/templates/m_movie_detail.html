@@ -1,0 +1,50 @@
+                               {% extends "mobile_cover.html" %}
+                               
+                                 {% block content %}
+                             
+                                
+                                      <section class="story">
+                                  
+                                     <section>
+                                     
+                                     <article>
+     <img class="mainPoster" src ="{{MEDIA_URL}}img/interstellar.jpg" />
+                                     </article>
+     
+                          
+                         <h3 class="centerpiece">{{movie.title|safe|title}}</h3> 
+                                      
+                   
+                                      </section>
+                                      
+                                      <section>
+             <article class="mainReview"><p>{{movie.review|safe|linebreaks}}</p></article>
+                                       </section>
+             
+                              {% if user.is_admin %}
+                                  
+    <p><a class="bevelText" href="{% url 'edit' movie.slug %}"> Edit Review </a></p>
+                            
+                                 {% else %}
+                                 
+                       {% if user.id == movie.user.id %}
+  <p><a class="" href="{% url 'edit' movie.slug %}"> Edit Your Review </a></p>
+                                {% endif %}
+                                
+                                 {% endif %}
+                                 </article>
+                          
+                                   <section>
+                              <article class="author centerpiece">
+                 
+                <img class="authorImg" src ="{{MEDIA_URL}}img/fresher.jpg" />
+             <p class=""><b> By {{movie.user.full_name|title}}</b></p>
+               <p class="tiny-print "> {{movie.timestamp|timesince}} ago </p>
+                                 </article>
+                                   </section>
+                                   
+                                   </section>
+                                
+                                 {% endblock %}
+                                
+                                
