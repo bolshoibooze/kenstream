@@ -1,0 +1,10 @@
+Django==1.6.7
+django-embed-video
+django-facebook-auth
+django-admin-honeypot
+django-fluent-comments
+django-form-utils
+sorl-thumbnail
+django-tinymce
+htmlmin
+Pillow
