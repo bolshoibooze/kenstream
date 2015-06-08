@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en" manifest="">
+
+<head> 
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="{{MEDIA_URL}}img/favicon.ico">
+
+                         <title>Kenstream</title>
+      
+                          {% block meta %}           
+    <meta name="description" content="Kenstream is a simple movie recommendation forum">
+                          {% endblock %}
+    
+         
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Streaming,Movies,Series,Recommendations,Reviews,Documentaries,Kenyan">
+    
+     <!-- google settings -->
+    
+     <!-- bing settings --->
+   
+    
+    
+<!---styles --->
+
+
+
+<!---
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+-->
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" href="{{MEDIA_URL}}css/main.css">
+<link rel="stylesheet" href="{{MEDIA_URL}}material-design-iconic-font/css/material-design-iconic-font.min.css"> 
+
+<!--- end styles --->
+</head>
+
+<body>
+        
+                  {% block header %}
+                  <section class="navbar centerpiece">
+                  
+   <i class="md md-tv md-2x"></i> <i class="md-2x">Kenstream</i>
+
+                  
+                  </section>
+                  {% endblock %}
+                   
+                   
+                   {% block nav %}{% endblock %}
+   
+       
+                   {% block notifications %} {% endblock %}
+
+
+                   {% block content %} {% endblock %}
+                   {% block content1 %} {% endblock %}
+                   
+                   {% block content2 %} {% endblock %}
+                   
+                   {% block content3 %} {% endblock %}
+                   
+                   {% block content4 %} {% endblock %}
+                   
+                   {% block content5 %} {% endblock %}
+                   
+                   {% block content6 %} {% endblock %}
+                   
+                   {% block content7 %} {% endblock %}
+                   
+                   {% block content8 %} {% endblock %}
+                   
+                   {% block content9 %} {% endblock %}
+                   
+                   {% block content10 %} {% endblock %}
+                   
+                         
+                              {% block footer %}
+                    <footer class="footer centerpiece">
+                           
+          <p class="handwritten">Taking the hustle out of watching a good movie</p>
+
+                         <article class="bottom-nav">
+<a class="item-spacing" href="{% url 'series' %}">Series</a>
+<span class="dot">&middot;</span> <a class="item-spacing" href="{% url 'tv' %}"> T.V Guide </a><span class="dot">&middot;</span> <a class="item-spacing" href="{% url 'documentaries' %}"> Documentaries  </a> <span class="dot">&middot;</span> <a class="item-spacing" href="{% url 'classics' %}"> Classics  </a>
+                                 </article>
+                                 
+                            <article class="action-button">
+                <a  href="{% url 'login' %}"> Write a Review  </a> 
+                                    </article>  
+                   
+
+                               </footer>
+                              {% endblock %}
+               
+
+                              {% block js %}
+                        
+                              {% endblock %}
+
+
+     
+
+
+    </body>
+</html>

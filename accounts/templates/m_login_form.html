@@ -1,0 +1,23 @@
+                     {% extends "mobile_cover.html" %}
+              
+	            
+                          {% block content %}
+                 <h3 class="align-center spaced"> SignUp </h3>
+			<section>
+             <article class="loginCard">
+        <form   action="." method="post" >{% csrf_token %}
+                  {{form.non_field_errors }}
+
+    		   {% include "login.html" %}
+
+     <input type="submit" class="button" name="submit" value="Login" id="submit" />
+        </form>
+          </article>
+          
+               <article class="action-button centerpiece">
+                    <a href="{% url 'signup' %}"> SignUp </a>
+                           </article>
+                           
+                           </section>
+        
+                       {% endblock %}

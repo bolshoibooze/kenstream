@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<!-- markup for a polygot page: accomodate HTML & XHTML -->
+<html id="Kenstream" xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" manifest="" class="no-js">
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="{{MEDIA_URL}}img/favicon.ico">
+	               <title>Kenstream</title>
+        
+        
+    <meta name="description" content="Kenstream is a simple movie recommendation forum">
+        
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, user-scalable=no">
+
+          <meta http-equiv="x-dns-prefetch-control" content="on">
+          
+          
+                <meta http-equiv="cleartype" content="on">
+    
+          <!-- google settings -->
+     
+     <!-- bing settings --->
+    
+    
+<meta name="viewport" 
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+<!--
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+--->
+
+<link rel="Stylesheet" type="text/css" href="{{MEDIA_URL}}css/styles.css"/>
+<link rel="stylesheet" href="{{MEDIA_URL}}material-design-iconic-font/css/material-design-iconic-font.min.css"> 
+
+<!--[if IEMobile 7]>
+<link rel="stylesheet" type="text/css" href="mobile.css"  href="mobile.css" media="screen"  />
+<![endif]-->
+
+
+</head>
+   
+ <body>
+
+                     
+              {% block  header %}
+              <section class="navbar">
+<i class="md-tv md-2x align-left"></i><a class="neutral" href="{% url 'create' %}" title="Write Review"><i class="md-add md-2x align-right"></i></a>
+
+               </section>
+              {% endblock %}
+                       
+         
+
+		{% block nav %} {% endblock %}
+	     {% block notifications %}  {% endblock %}
+
+		{% block content %}  {% endblock %}
+
+
+
+		 {% block content1 %}{% endblock %}
+
+
+		 {% block content2 %}{% endblock %}
+
+
+		 {% block content3 %}{% endblock %}
+
+
+		 {% block content4 %}{% endblock %}
+
+
+		 {% block content5 %}{% endblock %}
+		 
+		 {% block content6 %}{% endblock %}
+		 
+		 {% block content7 %}{% endblock %}
+
+ 
+		           {% block footer %}
+                        <footer class="footer">
+                        
+                        <article class="sticky-footer">
+<a class="neutral-link align-left" href="{% url 'watchlist' %}"><i class="md-home md-2x"></i></a>
+              <a class="neutral btm-1" href=""><i class="md-search md-2x"></i></a>
+             <a class="neutral btm-2" href=""><i class="md-public md-2x"></i></a>
+          <a class="neutral align-right" href=""><i class="md-person md-2x"></i></a>
+                        </article>
+                              
+      <p class="handwritten centerpiece">Taking the hustle out of watching a good movie</p>
+            
+                      
+                      
+                                 
+                         <article class="action-button">
+                <a  href="{% url 'login' %}"> Write a Review  </a> 
+                                </article>  
+                                 
+                              </footer>
+                            {% endblock %}
+                     
+                          {% block js %}
+
+ <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js">
+</script>
+                               
+                               {% endblock %}
+        
+    
+
+</body>
+</html>
+

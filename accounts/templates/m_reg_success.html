@@ -1,0 +1,20 @@
+                              {% extends "m_user_base.html" %}
+                              
+                                  
+                                   {% block content %}
+                          <section class="centerpiece">
+                             
+                               <h3>Registration Success</h3>
+                      
+                                      <article> 
+                       <p class="">Welcome aboard</p>
+                           <p>
+              Thanks for signing up as reviewer, please <a href="{% url 'login' %}">login</a> 
+              and start writing some reviews.
+                           </p>
+                                    </article>
+                                    
+                                   
+                               </section>
+                             
+                              {% endblock %}
