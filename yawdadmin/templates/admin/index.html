@@ -1,0 +1,95 @@
+{% extends "admin/base_site.html" %}{% load i18n yawdadmin_filters %}{% load url from future %}
+
+{% block extrahead %}{% if ga_data and not ga_data.error %}
+		<script src="https://www.google.com/jsapi"></script>
+		<script>
+			google.load("visualization", "1", {packages:["corechart"]}); 
+			google.setOnLoadCallback(drawChart);
+			
+			function drawChart() {   
+				var data = google.visualization.arrayToDataTable([
+					["{% trans 'Date' %}", "{% trans 'New' %}", "{% trans 'Returning' %}", "{% trans 'Total visits' %}"],{% for row in ga_data.chart %}
+					["{{row.date}}", {{row.new}}, {{row.returning}}, {{row.total}}],{% endfor %}
+				]);
+
+				var options = {
+					title: "{% trans 'Last 30 days visits' %}",
+					titleTextStyle: {color: '#111', fontSize: 18, fontName: 'Ubuntu Condensed' },
+					pointSize: 6,
+					chartArea: {width: '100%', top : 30, height: 220 },
+					legend: {position: 'in'},
+					axisTitlesPosition: 'in',
+					vAxis: {textPosition: 'in'},
+					hAxis: {textPosition: 'none'},
+					colors: ['#ED8D2D', '#F54747', '#2F96B4']
+				};
+
+				var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+			}
+		</script>{% endif %}{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% block breadcrumbs %}
+ <ul class="breadcrumb">
+<li class="active"><i class="icon-home"></i> {% trans 'Home' %}</li>
+			</ul>{% endblock %}
+
+{% block main-struct %}
+ <div id="content-main">
+ 
+						
+{% if app_list %}{% with sep=app_list|length|divide:2 %}
+    <div class="row-fluid">
+ <div class="span6">
+ {% for app in app_list %}{% if forloop.counter0 == sep %}
+   </div>
+  <div class="span6">{% endif %}
+  
+<table class="table table-rounded table-striped" summary="{% blocktrans with app.name as name %}Models available in the {{ name }} application.{% endblocktrans %}">
+									    <thead>
+										<tr class="grey-degrade">
+											<th colspan="2" class="title"><a href="{{ app.app_url }}" class="section">{% blocktrans with app.name|app_title as name %}{{ name }}{% endblocktrans %}</a></th>
+										</tr>
+  </thead>
+									<tbody>{% for model in app.models %}
+										<tr>{% if model.perms.change %}
+											<td><a href="{{ model.admin_url }}">{{ model.name }}</a></td>{% else %}
+											<td>{{ model.name }}</td>{% endif %}
+											<td>
+												<div class="pull-right">{% if model.perms.add %}
+													<a href="{{ model.add_url }}" class="btn btn-mini btn-success">
+														<i class="icon-plus icon-white"></i>&#xa0;{% trans 'Add' %}
+													</a>{% endif %}{% if model.perms.change %}
+													<a href="{{ model.admin_url }}" class="btn btn-mini btn-info">
+														{% trans 'Change' %}&#xa0;<i class="icon-edit icon-white"></i>
+													</a>{% endif %}
+												</div>
+											</td>
+										</tr>{% endfor %}
+									</tbody>
+								</table>{% endfor %}
+							</div>
+						</div>{% endwith %}{% else %}
+						<p class="alert">{% trans "You don't have permission to edit anything." %}</p>{% endif %}
+					</div>{% endblock %}
+
+{% block sidebar %}<div class="well well-open">
+						<h3 class="filter-title">{% trans 'Recent Actions' %}</h3>
+						<ul class="nav nav-list">
+							<li class="nav-header">{% filter utfupper %}{% trans 'My Actions' %}{% endfilter %}</li>{% load log %}{% get_admin_log 10 as admin_log for_user user %}{% if not admin_log %}
+							<li>
+								<p class="tip">{% trans 'None available' %}</p>
+							</li>{% else %}{% for entry in admin_log %}
+							<li>{% if not entry.is_deletion and entry.get_admin_url %}
+								<a class="log-link" href="{{ entry.get_admin_url }}">{% endif %}
+									<i class="icon-{% if entry.is_addition %}plus{% elif entry.is_change %}edit{% elif entry.is_deletion %}remove{% endif %}"></i> {{ entry.object_repr }}{% if not entry.is_deletion and entry.get_admin_url %}
+								</a>{% endif %}{% if entry.content_type %}
+								<span class="mini quiet">{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}</span>{% else %}
+								<span class="mini quiet">{% trans 'Unknown content' %}</span>{% endif %}
+								<span class="mini">{{entry.action_time|date:"d N, H:i"}}</span>
+							</li>{% endfor %}{% endif %}
+						</ul>
+					</div>
+				{% endblock %}

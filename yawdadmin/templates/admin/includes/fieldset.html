@@ -1,0 +1,66 @@
+{% load i18n %}
+
+    {% if fieldset.name %}
+    <div class="table-responsive">
+<table class="table table-rounded ">
+
+  <thead>
+										       <tr class="grey-degrade">
+<th  class="custom-title">{{ fieldset.name }}</th>
+     </tr>
+    </thead>
+    {% endif %}
+										 
+									         
+  
+  <tbody>
+	
+   
+<fieldset id="fieldset-no-{{forloop.counter}}" class="module aligned {{ fieldset.classes }}">
+   {% if fieldset.description %}
+<div class="description alert">{{ fieldset.description|safe }}</div>
+	    
+	{% endif %}
+	
+	<tr>
+           <td>
+	{% for line in fieldset %}
+ <div class="row-fluid color-form {% cycle 'row1' 'row2' %}{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% for field in line %}{% if field.field.is_hidden %} has-hidden-field{% endif %}{% endfor %}">
+ 
+<div class="field">
+{% if not line.fields|length_is:'1' and line.errors %}
+									<div class="alert alert-error">
+							
+   {{ line.errors }}
+   </div>{% endif %}
+	        </td>
+	     </tr>
+	     
+	 <tr>
+	   <td>
+	{% for field in line %}
+									<div class="control-group {% if not line.fields|length_is:'1' %} field-box{% endif %}{% if not field.is_readonly and field.errors %} error{% endif %}">
+										<label class="control-label{% if field.field.field.required %} required{% endif %}" for="{{field.field.auto_id}}">{{ field.field.label }}:</label>
+										<div class="controls">{% if field.is_readonly %}
+											<span><i>{{ field.contents }}</i></span>{% elif field.is_checkbox %}
+											<span class="switch">
+												{{field.field}}
+												<span class="switch-track"></span>
+												<span class="switch-thumb"></span>
+											</span>
+											{% else %}
+											<spn class="spacing">{{ field.field }}</span>
+										{% endif %}
+										{% if field.field.help_text %}
+											<i class="help icon-question-sign" data-html="true" data-title="{{ field.field.label }} - {% trans 'help text' %}" data-content="{{ field.field.help_text }}"></i>{% endif %}{% if line.fields|length_is:'1' and not field.is_readonly and field.errors %}
+											<span class="help-inline">{{ field.errors }}</span>
+											  {% endif %}</td>
+	      </tr>
+											  
+										                      </div>
+   </div>{% endfor %}
+	</div>
+	 </div>{% endfor %}
+	       </fieldset>
+	           </tbody>
+	              </div>
