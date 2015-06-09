@@ -18,11 +18,16 @@ urlpatterns = patterns('watchlist.views',
 
     #url(r'^edit/(?P<slug>[a-zA-Z0-9-]+)$',login_required(EditReview.as_view()),name = 'edit'),
      
-    url(r'^edit/(?P<slug>[a-zA-Z0-9-]+)$',EditReview.as_view(),name = 'edit'), 
+    url(r'^edit/(?P<slug>[a-zA-Z0-9-]+)$',EditReview.as_view(),name = 'edit'),
+    
+    url(r'^like/$', 'like', name='like'), 
       
     url(r'^watchlist/$',WatchListView.as_view(),
         name='watchlist'),
-        
+    
+    url(r'^discover/$',DiscoverListView.as_view(),
+        name='discover'),
+           
     url(r'^movie/(?P<slug>[a-zA-Z0-9-]+)/$',WatchDetailView.as_view(),
         name='movie'),
         

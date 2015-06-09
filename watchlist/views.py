@@ -1,5 +1,6 @@
 from django.http import *
 from django.shortcuts import *
+from django.utils import simplejson
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.messages import add_message
@@ -48,6 +49,15 @@ class WatchListView(ModelListView):
       
       def get_queryset(self):
           queryset = sql
+          return queryset
+          
+class DiscoverListView(ModelListView):
+      model = Movie
+      template_name = 'user_list.html'
+      mobile_template_name = 'm_user_list.html'
+      
+      def get_queryset(self):
+          queryset = sql.filter(editors_pick=False)
           return queryset
           
       
@@ -146,6 +156,35 @@ class DocumentariesListView(ModelListView):
           #queryset = movies.filter(genre__name__icontains='documentaries')
           queryset = Movie.objects.filter(genre__name__icontains='documentaries')
           return queryset
+          
+          
+def like(request):
+    vars = {}
+    if request.method == 'POST':
+        user = request.user
+        slug = request.POST.get('slug', None)
+        company = get_object_or_404(Movie, slug=slug)
+
+        liked, created = Like.objects.create(movie=movie)
+
+        try:
+            user_liked = Like.objects.get(movie=movie, user=user)
+        except:
+            user_liked = None
+
+        if user_liked:
+            user_liked.total_likes -= 1
+            liked.user.remove(request.user)
+            user_liked.save()
+        else:
+            liked.user.add(request.user)
+            liked.total_likes += 1
+            liked.save()
+
+
+    return HttpResponse(simplejson.dumps(vars),
+           mimetype='application/javascript'
+           )
           
 
 """

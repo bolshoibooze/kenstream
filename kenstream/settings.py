@@ -44,11 +44,12 @@ INSTALLED_APPS = (
     'accounts',
     'watchlist',
     'ua_detector',
-    'ratings',
+    'likes',
     
     #other apps 
     'sorl.thumbnail',
     'admin_honeypot',
+    'secretballot',
     'form_utils',
     'tinymce',
     'avatar',
@@ -83,6 +84,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'yawdadmin.middleware.PopupMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'secretballot.middleware.SecretBallotIpUseragentMiddleware',
+    'likes.middleware.SecretBallotUserIpUseragentMiddleware',
 )
 
 STATICFILES_FINDERS = (
@@ -170,3 +173,12 @@ TYPE = (
    ('Feature Film','Feature Film'),
    ('Documentary','Documentary')
 )
+
+RATINGS = (
+   ('Must-watch','Must-watch'),
+   ('Good stuff','Good stuff'),
+   ('Average','Average'),
+   ('Pathetic','Pathetic')
+)
+
+

@@ -2,20 +2,24 @@
                      
                      
                          {% block content %}
-               <article class="simple-title">Watch List</article>
+                <h2 class="centerpiece"> T.V Guide</h2>
                           
                           {% for movie in movie_list %}
                         
                             <div class="card">
                        
                                <article>
-       <img class="miniPoster" src ="{{MEDIA_URL}}img/interstellar.jpg" alt="Movie Poster"/>
+       <img class="miniPoster" src ="{{movie.poster.url}}" alt="Movie Poster"/>
                               </article>
      
                                 
-                           <article class="movie-title">
-     <a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a>
+                           <article class="centerpiece">
+     <h1><a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a></h1>
                                      </article> 
+                                     
+                           <article class="ratings">
+                              {{movie.ratings|title|safe}}
+                              </article>
                             
                              
                     
@@ -26,23 +30,26 @@
 &rarr;</a>
           </p>
                                 </article>
+                                
+                            <article class="social-buzz">
+                                 {% likes movie %}
+                                   </article>
                         
-                        <article class="centerpiece"> 
+                        <article class="centerpiece micro-copy"> 
                  <p> <b> By {{movie.user.full_name|title}}</a></p>
-              <span class="tiny-print time ">{{movie.timestamp|timesince}} ago </span>
+              
                                  </article>
-                                 
-                                 {% empty %}
-                         <article class="floatingCard noReview">
-             <img class="posterCard" src="{{MEDIA_URL}}img/interstellar.jpg">
-                   <p class="handwritten padded"> No reviews posted yet </p>
-                                 </article> 
                                  
                                  
                                   </div>
+                                  
+                                  {% empty %}
+                         <article class="centerpiece">
+             
+                   <p class="handwritten"> No reviews posted yet </p>
+                                 </article> 
                                  {% endfor %}
                                  
                                   
                                 {% endblock %}
-                                
                                 

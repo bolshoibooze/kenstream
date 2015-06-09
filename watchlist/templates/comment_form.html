@@ -1,7 +1,7 @@
 
                                {% load comments %}
                                
-                               <div class="comment-form">
+                               <article class="comment-form">
           <form action="{% comment_form_target %}" method="post">{% csrf_token %}
                              {% csrf_token %}
         
@@ -9,7 +9,8 @@
                            
 
    
-          <input type="hidden" name="next" value="{% url 'article' article.slug  %}" />
-               <input class="button" name="post" value="Post comment" type="submit"/>
+          <input type="hidden" name="next" value="{% url 'movie' movie.slug  %}" />
+               <input class="comment-button" name="post" value="Post comment" type="submit"/>
 
                                     </form>
+                                  </article>

@@ -2,12 +2,22 @@ body {border:0;font-weight: normal;background-color:#F6F6F6 ;overflow:auto;color
 font-size:1em;font-weight:normal;line-height: 1.4;font-family: 'Lato', sans-serif;
 padding: 0;margin: 0;}
 
+h1{font-size:1.3em;}
+h2{font-size:1.7em;}
+h3{font-size:2.3em;}
+h4{font-size:3.1em;}
+h5{font-size:4.1em;}
+h6{font-size:5.5em;}
+
 .logo {text-align:left;display:inline-block;font-size: 1em;line-height: normal;
 color:black;word-spacing:1px;font-weight:bolder;font-family:'Lato',sans-serif;margin-left:3%;}
-.web-icon {font-size:1.5em;margin-top:2%;display:inline-block;}
+.web-icon {font-size:0.7em;margin-top:2%;display:inline-block;}
 
 .navbar {margin-bottom:2%;height:5px;margin-top:2%;padding-bottom:42px;
-margin-left:15%;margin-right:15%;}
+margin-left:15%;margin-right:15%;font-size:1em;}
+.main-icon {font-size:0.3em;}
+.i-logo {font-size:1.7em;line-height: 50px;display: inline-block;vertical-align: bottom;
+font-weight:bolder;line-height: inherit;}
 
 @font-face{font-family:Vtks;src:url(/static/media/css/vtks_giz.ttf);}
 @font-face{font-family:Handwriting;src:url(/static/media/css/regular_brush.ttf);}
@@ -83,27 +93,32 @@ p { margin: 20px 0;margin-bottom:1%; }
 
 
 
-
 .paragraph {font-size:1em;line-height:normal;margin-top:3%;margin-bottom:3%;padding:5px;margin-left:5%;margin-right:5%;}
-
+.comment {display: inline-block;margin-bottom: 3%;border-bottom:2px solid #eee;}
+.commentImg{display: inline-block;width: 80px;height: 80px;border-radius: 40px;line-height: 80px;margin-bottom:1%;-webkit-border-radius:40px;-moz-border-radius:40px;-webkit-background-clip: padding-box; -moz-background-clip:padding;
+background-clip:padding-box;margin-top:2%;}
+.comment-form{border-top:3px solid #eee;margin-top:2%;margin-bottom:5%;}
+.comment-stamp {display: inline-block;vertical-align: bottom;}
 
 .textblock {margin-left:5%;margin-right:5%;} .handwritten{font-family:Handwriting,sans-serif;text-align:center;font-size:1.5em;font-weight:normal;}
-
+.micro-copy {font-size:0.8em;line-height:inherit;}
 
 .footer {background-color:#f1e7d4;color:#B7A85C;font-size:0.8em;border-top:5px solid white;}
 
 /* Cards */ 
 
-#columns {width:30%;border-radius:5px;}
+#columns {width:30%;border-radius:5px;float:center;}
 
- div#columns{background-color:#2B2B2B;color:white;box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);margin:2% 1% 2% 1%;transition: opacity .4s ease-in-out;column-break-inside: avoid;display: inline-block;font-family:Helvetica,serif;
+ div#columns{background-color:#2B2B2B;color:white;box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);margin:2% 1% 2% 1%;transition: opacity .4s ease-in-out;column-break-inside: avoid;
+ display: inline-block;font-family:'Lato', sans-serif;
 }
 div#columns figure img{
 width: 100%; height:200px;
 
 }
 
-.review {padding-left:15px;padding-right:15px;font-size:1em;font-weight:normal;font-family: 'Lato', sans-serif;}
+.review {padding-left:15px;padding-right:15px;font-size:1em;font-weight:normal;font-family: 'Lato', sans-serif;
+margin-bottom:4%;}
 
 .floatingCard{background-color:#2B2B2B;color:white;font-size:large;text-align:center;border-top:1px solid #C9E581;border-bottom:1px solid #C9E581;padding:5px;border-radius:5px;
 border:none;border-bottom:25% solid #2B2B2B;}
@@ -112,8 +127,7 @@ border:none;border-bottom:25% solid #2B2B2B;}
 .noReview{font-size:larger;text-align:center;margin:5% 35% 5% 35%;} 
 
 .posterCard {width:100%;height:200px;}
-.mainPoster {width:100%;height:70%;}
-.bevelText{border-radius:5px;padding:8px;width:10%;background-color:grey;text-align:center;}
+.mainPoster {width:100%;height:100%;}
 .authorImg{display: inline-block;width: 80px;height: 80px;border-radius: 40px;line-height: 80px;margin-bottom:1%;-webkit-border-radius:40px;-moz-border-radius:40px;-webkit-background-clip: padding-box; -moz-background-clip:padding;
 background-clip:padding-box;}
 .author{margin-top:5%;margin-left:45%;margin-top:1px solid #eee;}
@@ -121,26 +135,38 @@ background-clip:padding-box;}
 .loginCard{background-color:#2B2B2B;margin:2% 27% 5% 27%;border-top:25px solid #2B2B2B;border-bottom:45px solid #2B2B2B;border-radius:5px;}
 .wideCard {background-color:#2B2B2B;margin:2% 13% 5% 13%;border-top:25px solid #2B2B2B;border-bottom:45px solid #2B2B2B;border-radius:5px;}
 
-/* colored paragraphs with different font-colors? ---> here:to do */
-
-.slim-content {text-align: center;margin:3% 20% 2% 20%;border-bottom:1px solid #eee;#2B2B2B}
-
 
 /* buttons */
+
+
 .button {color:white;background-color:#329685;border-radius:5px;width:80%;
 height:2em;padding:5px;margin-top:2%;margin-bottom:1%;font-size:large;margin-left: 9%;
 border:none;font-weight:bolder;}
 .button:hover{background-color: #aae3c7;padding-top: 4px;}
 
-.action-button{margin-top:5%;padding:10px;border-radius:5px;background-color:#DE1B1B;width:20%;margin-left:40%;}
-.action-button:hover {padding-top:4px;background-color:#c96f5c;}
-
-.side-button {color:white;background-color:#43442B;border-radius:5px;width:45%;
-height:2em;padding:5px;margin-top:2%;margin-bottom:4%;font-size:large;
-border:none;font-weight:bolder;display:inline-block;}
-.side-button:hover{background-color: #B7A85C;padding-top: 4px;}
+.comment-button {color:white;background-color:#329685;border-radius:5px;width:50%;
+height:2em;padding:5px;margin-top:2%;margin-bottom:1%;font-size:large;margin-left: 25%;
+border:none;font-weight:bolder;}
+.comment-button:hover{background-color: #aae3c7;padding-top: 4px;}
 
 
+.action-button{margin-top:5%;padding:10px;border-radius:5px;background-color:#69cd6c;width:20%;margin-left:40%;}
+.action-button:link {color:white;font-weight:bolder;}
+.action-button:hover {padding-top:4px;background-color:#a5e1ae;}
+
+.ratings {background-color:#C9E581;color:black;font-weight:bolder;padding: 2px;width:50%;height:1.7em;
+text-align:center;margin-left:25%;display: inline-block;vertical-align: bottom;}
+
+.social-buzz {background-color:grey;width:90%;color:black;border-radius:5px;
+font-size:1em;padding: 4px;margin-left:5%;}
+.bz-item{color:black;font-size:0.8em;padding: 4px;display: inline-block;vertical-align: bottom;
+font-weight:bolder;line-height: inherit;
+}
+.liker:link {color:black;}
+.liker:focus {background-color:black;text-decoration:none;}
+.liker:hover {text-decoration:none;padding: 4px;}
+.liker:visited {color:black;text-decoration:none;}
+.liker:active {padding-top: 2px;text-decoration:none;}
 
 .action-call {border-radius:5px;font-size:1.2em;padding:10px;float:center;
 margin-left:33%;margin-top:3%;border:4px solid red;margin-bottom:3%;
@@ -158,10 +184,9 @@ font-weight:bolder;}
 /* Link States */
 a:link {color: #0083ff;font-weight: bolder;text-decoration:none;}
 a:focus {background-color:red;text-decoration:none;}
-a:hover {border-radius:5px;border-bottom: 1px solid #F08080;text-decoration:none;
-padding: 4px;}
+a:hover {border-bottom: 1px solid #DE1B1B;text-decoration:none;padding: 4px;}
 a:visited {color:#7eccd4;text-decoration:none;}
-a:active {color:#990000;padding-top: 2px;text-decoration:none;}
+a:active {color:#DE1B1B;padding-top: 2px;text-decoration:none;}
 
 .links{margin:2%;line-height:normal;text-decoration:none;}
 .neutral-lnk{border-radius:5px;border:1px solid white;background-color:white;padding:10px;width:10%;}
@@ -188,7 +213,7 @@ font-weight:normal;}
 .pure-adjusted {margin-left:18%;} .widener {margin-left:18%;width:80%;color:black;}
 
 .blank {display:none;}
-.comment-form{border-top:1px solid #333333;magin-top:2%;}
+
  .extreme-align{margin-left:15%;magin-top:4%;}
 .select-field {background: transparent; width: 30%;padding: 10px;font-size:1em;line-height: 1;border-radius: 5px;height:80px;margin-left:38%;display: inline-block;background-color:black;color:white;-webkit-border-radius:5px;-moz-border-radius:5px;}
 .checkbox {border-radius:5px;border:1px solid #333333;padding:8px;margin-left:8%;margin-right:8%;-webkit-border-radius:5px;-moz-border-radius:5px;}
@@ -252,6 +277,6 @@ background-color: #4A4A4A;border-radius:5px;}
 
 
 .footer {background-color:#F6F6F6;color:black;font-size:0.8em;border-top:85px solid #F6F6F6;text-align:center;border-bottom:100px solid #F6F6F6;} 
-.item-spacing {font-weight:bolder;padding:5px;} .dot {font-weight:bolder;color:black;font-size:larger;}
+.item-spacing {font-weight:bolder;padding:5px;margin-right:3%;} .dot {font-weight:bolder;color:black;font-size:larger;}
 
 

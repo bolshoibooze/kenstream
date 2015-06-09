@@ -1,25 +1,23 @@
                                {% load comments %}
                                
-                       {% get_comment_list  for article as comment_list %}
+                       {% get_comment_list  for movie as comment_list %}
                        
                            {% for comment in comment_list %}
     
-                        <div class="paragraph">
-            <img class="content-Img"  src ="{{comment.user.photo.url}}" />
-            
-                       <span class="align-right">
-           <p class="align-center micro-copy">
+                          <article class="comment">
+                          <p>
+            <img class="commentImg" src ="{{MEDIA_URL}}img/fresher.jpg" />
+            <span class="comment-stamp micro-copy">
       <b>{{comment.user.full_name}}</b>    |   {{ comment.submit_date|timesince }} ago 
+      </span>
       </p>
-     
-           </span><br/>
-            
-           <p>{{ comment.comment|safe|linebreaks|truncatechars:250 }}</p>
-           
       
+          <p>{{ comment.comment|safe|linebreaks|truncatechars:250 }}</p>
+            
+            
                
           
-                                </div>
+                                </article>
    
         
   

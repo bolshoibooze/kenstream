@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load comments %}
+
+{% if import_js %}
+    <script type="text/javascript" src="{{MEDIA_URL}}js/likes.js"></script>
+{% endif %}
+
+{% if likes_enabled %}
+ 
+    
+        
+            {% if can_vote %}
+<a class="liker" href="{% url 'like' content_type content_obj.id 1 %}" rel="nofollow"><i class=" md-favorite-outline"></i></a><span class="bz-item">{{ content_obj.vote_total }}</span>
+            {% else %}
+                <i class=" md-favorite"> </i><span class="bz-item">{{ content_obj.vote_total }}</span>
+            {% endif %}
+       
+        
+        <span class="align-right"><span class="bz-item">{% get_comment_count  for movie as comment_count %} {{comment_count}}</span><a class="liker" href="{% url 'movie' movie.slug %}" ><i class="md-comment "></i></a></span>
+   
+    
+   
+{% endif %}

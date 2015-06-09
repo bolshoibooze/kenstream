@@ -1,18 +1,20 @@
-                               {% extends "mobile_cover.html" %}
+                              {% extends "mobile_cover.html" %}
+                              {% load likes_inclusion_tags %}
+                                    {% load comments %}
                                
                                  {% block content %}
                              
                                 
-                                      <section class="story">
+                                <section class="story">
                                   
                                      <section>
                                      
                                      <article>
-     <img class="mainPoster" src ="{{MEDIA_URL}}img/interstellar.jpg" />
+     <img class="mainPoster" src ="{{movie.poster.url}}" />
                                      </article>
      
                           
-                         <h3 class="centerpiece">{{movie.title|safe|title}}</h3> 
+                     <h1 class="centerpiece">{{movie.title|safe|title}}</h1> 
                                       
                    
                                       </section>
@@ -34,17 +36,32 @@
                                  {% endif %}
                                  </article>
                           
-                                   <section>
+                                   
+                                   </section>
+                                   
+                              <section class="story">
                               <article class="author centerpiece">
                  
                 <img class="authorImg" src ="{{MEDIA_URL}}img/fresher.jpg" />
-             <p class=""><b> By {{movie.user.full_name|title}}</b></p>
+             <p class="micro-copy"><b> By {{movie.user.full_name|title}}</b></p>
                <p class="tiny-print "> {{movie.timestamp|timesince}} ago </p>
                                  </article>
                                    </section>
                                    
+                                   <section>
+                          <h1 class="centerpiece">
+{% get_comment_count  for movie as comment_count %}{{comment_count}} Comment{{comment_count|pluralize}}  
+                          </h1>
+                            
+                    {% get_comment_form  for movie as form %}
+               
+                          {% include "comment_form.html" %}
+                          
+               <article class="comment-form">{% include "comment_list.html" %}</article>
                                    </section>
                                 
                                  {% endblock %}
+                                 
+                                 
                                 
                                 

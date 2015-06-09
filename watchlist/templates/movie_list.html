@@ -1,13 +1,15 @@
-                        {% extends "core.html" %}
-                        
+                          {% extends "core.html" %}
+                      {% load likes_inclusion_tags %}
+                           {% load comments %}
                              {% block nav %}
                          <nav class="nav centerpiece">
                            <ul>
 	    
 	  <li class="current"><a href="{% url 'watchlist' %}">WatchList</a></li>
+	       <li><a href="{% url 'discover' %}">Discover</a></li>
 	        <li><a href="{% url 'series' %}">Series</a></li>
 	         <li><a href="{% url 'tv' %}">T.V Guide</a></li>
-	         <li><a href="{% url 'classics' %}">Classics</a></li>
+	        
 	         
      
                              </ul>
@@ -28,20 +30,30 @@
                             
 		               <figure>
                       
-      <article> <img src ="{{MEDIA_URL}}img/interstellar.jpg" alt="Movie Poster"/></article>
+      <article> <img src ="{{movie.poster.url}}" alt="Movie Poster"/></article>
                                
                            <article class="centerpiece"> 
-     <h2><a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a></h2> 
+     <h1><a href="{% url 'movie' movie.slug  %}">{{movie.title|safe|title}}</a></h1> 
+                              </article>
+                              
+                         <article class="ratings">
+                              {{movie.ratings|title|safe}}
                               </article>
                     
                               <article class="review">
             {{movie.review|safe|linebreaks|truncatechars:140}}
  <a class="align-center" href="{% url 'movie' movie.slug %}">&rarr;</a>
  
+                                     </article>
+                                     
+                                <article class="social-buzz">
+                                 {% likes movie %}
+                                   </article>
  
-                    <article class="centerpiece">
+ 
+                          <article class="centerpiece micro-copy">
                 <p> <b> By {{movie.user.full_name|title}}</b></p>
-         <p class="micro-copy"> {{movie.timestamp|timesince}} ago</p>
+                   
    
                                 </article>
                   
@@ -49,7 +61,7 @@
                                  </figure>
                                    </div>
                                  {% endfor %}
-                                  
+                                    
                                   </section>
                                  {% endblock %}
                                  

@@ -29,7 +29,7 @@ class MovieAdmin(admin.ModelAdmin):
        'fields':('poster',)
     }),
     ('Review',{
-       'fields':('review',)
+       'fields':('ratings','review',)
     }),
    
     )

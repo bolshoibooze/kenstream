@@ -15,13 +15,9 @@ from django.utils.text import slugify
 
 from tinymce.models import HTMLField
 from .fields import EmbedVideoField
+from kenstream.settings import *
+import secretballot
 
-#stying the ratings:
-# source: http://www.fyneworks.com/jquery/star-rating/#tab-Overview
-# tutorial: http://www.azavea.com/blogs/labs/2011/04/jquery-star-rating-with-django-ratings/
-
-class RatingField(IntegerField):
-    pass
 
 class Genre(models.Model):
     name = models.CharField(
@@ -42,6 +38,8 @@ class Genre(models.Model):
     def save(self,*args,**kwargs):
         super(Genre,self).save(*args,**kwargs)
         
+ 
+        
 class Movie(models.Model):
     title = models.CharField(
        max_length=50,db_index=True,
@@ -54,6 +52,11 @@ class Movie(models.Model):
     poster = models.ImageField(
        upload_to='uploads/%Y/%m/%d',
        verbose_name='Poster',
+       null=True,blank=True
+    )
+    embed_video = HTMLField(
+       max_length=300,
+       name='Embed Video / Trailer',
        null=True,blank=True
     )
     video = EmbedVideoField(
@@ -76,6 +79,11 @@ class Movie(models.Model):
     review = HTMLField(
        max_length=350,verbose_name='Review',
        help_text='html content',
+    )
+    ratings = models.CharField(
+       max_length=100,choices=settings.RATINGS,
+       verbose_name='Content Ratings',
+       default=1
     )
     views = models.IntegerField(default=0)
     enable_comments = models.BooleanField(default=True)
@@ -110,7 +118,33 @@ class Movie(models.Model):
     def save(self,*args,**kwargs):
         self.slug = slugify(self.title)
         super(Movie,self).save(*args,**kwargs)
-        
+ 
+secretballot.enable_voting_on(Movie)
 
-from ratings.handlers import ratings
-ratings.register(Movie)
+class Like(models.Model):
+    user = models.ManyToManyField(
+       settings.AUTH_USER_MODEL,
+       related_name='likes'
+    )
+    movie = models.ForeignKey(
+       Movie,related_name='+',
+       verbose_name='Movie'
+    )
+    total_likes = models.IntegerField(
+       default=0,verbose_name='Total Likes'
+    )
+    created_at = models.DateTimeField(
+       auto_now_add=True
+    )
+    class Meta(object):
+        db_table = 'Like'
+        verbose_name_plural = 'Likes'
+        
+    def __unicode__(self):
+        return unicode(self.movie)
+        
+    def save(self,*args,**kwargs):
+        super(Like,self).save(*args,**kwargs)
+        
+        
+               

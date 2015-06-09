@@ -34,13 +34,13 @@ class SimpleForm(forms.ModelForm):
         super(SimpleForm, self).__init__(*args, **kwargs)
         self.fields['poster'].widget.attrs['class'] = 'fileUpoad'
         self.fields['genre'].widget.attrs['class'] = 'fileUpoad'
-        #self.fields['rating'].widget.attrs['class'] = 'star'
+        self.fields['ratings'].widget.attrs['class'] = 'fileUpoad'
         
    class Meta(object):
        model = Movie
        fields = (
        'title','genre','poster',
-       'review'
+       'review','ratings',#'embed_video'
        )
    
    def clean_poster(self):#set min-size
